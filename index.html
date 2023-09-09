@@ -137,25 +137,24 @@ return profile;
       //  Red squares are mines and blue squares are safe
       //    * If mineSweeper is called with such coordinates that the player lands on red, return the string "🟥 💀"
       //    * If the player lands on blue, return the string "🟦 🥳"
-      // 🧠 Edge cases:
-      //    * If the x or y coordinates are under 1 or over 3, return the string "invalid coordinates"
+      //
       function mineSweeper(grid, x, y) {
-
-// Check that x and y are valid coordinates
-if (x < 1 || x > 3 || y < 1 || y > 3) {
-  return "invalid coordinates"; 
-}
-
-// Get the square at the x,y coordinates
-const square = grid[y-1][x-1];
-
-// Check if square is red (mine) or blue (safe)
-if (square === "🟥") {
-  return "🟥 💀"; // Hit mine
-} else if (square === "🟦") {
-  return "🟦 🥳"; // Safe square
-}
-}
+        if (x < 1 || x > 3 || y < 1 || y > 3) {
+          return "invalid coordinates";
+        }
+        if (grid === undefined) {
+          return "invalid grid";
+        }
+        if (grid[y - 1] === undefined) {
+          return "invalid grid";
+        }
+        if (grid[y - 1][x - 1] === "🟥") {
+          return "🟥 💀";
+        }
+        if (grid[y - 1][x - 1] === "🟦") {
+          return "🟦 🥳";
+        }
+      }
 
 
     // 👉 CHALLENGE 3
@@ -198,7 +197,13 @@ if (square === "🟥") {
       //    scrub("aces high", ["high", "aces", "hearts"]) // returns "xxxx xxxx"
       //    scrub("", ["high", "aces""]) // returns ""
       // 🌟 HINT: useful array methods to use are `push`, `indexOf`, `split`, `join`
-    }
+      function scrub(text, forbidden) {
+        let scrubbed = text.split(" ");
+        scrubbed = scrubbed.filter(word =>!forbidden.includes(word));
+        scrubbed = scrubbed.join(" ");
+        return scrubbed;
+      }
+    
 
     // 👉 CHALLENGE 5
     function normalizePhoneNumber() {
@@ -213,6 +218,20 @@ if (square === "🟥") {
       // 🌟 HINT: instead of looping over the number's digits, loop backwards over a template "(XXX) XXX-XXXX"
       // 🌟 HINT: at each iteration, if the current character is an "X", replace it with the result of popping a digit from the number
       // 🌟 HINT: if you'd rather loop forwards, use `shift` instead of `pop`
+      function normalizePhoneNumber(number) {
+        if (number.length!== 10) {
+          return "type a 10-digit number";
+        }
+        let normalized = "";
+        for (let i = number.length - 1; i >= 0; i--) {
+          if (number[i] === "X") {
+            normalized += number.pop();
+          } else {
+            normalized += number[i];
+          }
+        }
+        return "(" + normalized.slice(0, 3) + ") " + normalized.slice(3, 6) + "-" + normalized.slice(6, 10);
+      }
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
@@ -223,7 +242,21 @@ if (square === "🟥") {
       // 🌟 HINT: research using `Math.random` to obtain a number from 1 to 6
       // 🌟 HINT: use `while(true)` to throw the dice indefinitely, but avoid an infinite loop by making sure to break out eventually
       // 🌟 HINT: you need to keep track of the total number of throws, as well as how many sixes in a row
-    }
+      function diceRolls() {
+        let throws = 0;
+        let sixes = 0;
+        while (true) {
+          let roll = Math.floor(Math.random() * 6) + 1;
+          throws++;
+          if (roll === 6) {
+            sixes++;
+          }
+          if (sixes === 3) {
+            return throws;
+          }
+        }
+      }
+    
 
     // 🧪 TESTS, do not make any changes below this line ===================
     // 🧪 TESTS, do not make any changes below this line ===================
@@ -335,4 +368,4 @@ if (square === "🟥") {
 </body>
 
 </html>
- }
+    }
