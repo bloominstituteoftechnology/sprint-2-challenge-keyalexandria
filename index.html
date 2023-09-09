@@ -139,7 +139,24 @@ return profile;
       //    * If the player lands on blue, return the string "🟦 🥳"
       // 🧠 Edge cases:
       //    * If the x or y coordinates are under 1 or over 3, return the string "invalid coordinates"
-    }
+      function mineSweeper(grid, x, y) {
+
+// Check that x and y are valid coordinates
+if (x < 1 || x > 3 || y < 1 || y > 3) {
+  return "invalid coordinates"; 
+}
+
+// Get the square at the x,y coordinates
+const square = grid[y-1][x-1];
+
+// Check if square is red (mine) or blue (safe)
+if (square === "🟥") {
+  return "🟥 💀"; // Hit mine
+} else if (square === "🟦") {
+  return "🟦 🥳"; // Safe square
+}
+}
+
 
     // 👉 CHALLENGE 3
     function booleanize() {
