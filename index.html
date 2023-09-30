@@ -139,7 +139,7 @@ return profile;
       //    * If the player lands on blue, return the string "🟦 🥳"
       //
       function mineSweeper(grid, x, y) {
-       /* if (x < 1 || x > 3 || y < 1 || y > 3) {
+        if (x < 1 || x > 3 || y < 1 || y > 3) {
           return "invalid coordinates";
         }
         if (grid === undefined) {
@@ -167,7 +167,7 @@ return profile;
       // 🧠 Edge cases:
       //    * If a property name exceeds 9 characters, return the string "shorten all prop names to 9 chars or less"
       // 🌟 HINT: careful not to perform any unintended changes on the object
-      /*function booleanize(obj) {
+      function booleanize(obj) {
         for (let prop in obj) {
           if (prop.length > 9) {
             return "shorten all prop names to 9 chars or less";
@@ -198,7 +198,7 @@ return profile;
       //    scrub("", ["high", "aces""]) // returns ""
       // 🌟 HINT: useful array methods to use are `push`, `indexOf`, `split`, `join`
       function scrub(text, forbidden) {
-     /*   let scrubbed = text.split(" ");
+      let scrubbed = text.split(" ");
         scrubbed = scrubbed.filter(word =>!forbidden.includes(word));
         scrubbed = scrubbed.join(" ");
         return scrubbed;
@@ -218,7 +218,7 @@ return profile;
       // 🌟 HINT: instead of looping over the number's digits, loop backwards over a template "(XXX) XXX-XXXX"
       // 🌟 HINT: at each iteration, if the current character is an "X", replace it with the result of popping a digit from the number
       // 🌟 HINT: if you'd rather loop forwards, use `shift` instead of `pop`
-     /* function normalizePhoneNumber(number) {
+      function normalizePhoneNumber(number) {
         if (number.length!== 10) {
           return "type a 10-digit number";
         }
@@ -242,7 +242,7 @@ return profile;
       // 🌟 HINT: research using `Math.random` to obtain a number from 1 to 6
       // 🌟 HINT: use `while(true)` to throw the dice indefinitely, but avoid an infinite loop by making sure to break out eventually
       // 🌟 HINT: you need to keep track of the total number of throws, as well as how many sixes in a row
-    /*  function diceRolls() {
+      function diceRolls() {
         let throws = 0;
         let sixes = 0;
         while (true) {
@@ -364,9 +364,6 @@ return profile;
       }
     } catch (err) { console.error(err.stack) }
       } 
-    
-</body>
-
-</hmtl>
-{end}
-*/ }}}
+    </body>
+    </html>
+    }
